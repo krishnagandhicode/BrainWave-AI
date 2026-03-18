@@ -9,13 +9,13 @@ import ChatList from "../../components/chatList/ChatList";
 const DashboardLayout = () => {
   const {userId, isLoaded} = useAuth();
 
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(isLoaded && !userId){
-      naviagte("/sign-in");
+      navigate("/sign-in");
     }
-  },[isLoaded, userId, naviagte]);
+  },[isLoaded, userId, navigate]);
 
   if(!isLoaded) return "Loading...";
 

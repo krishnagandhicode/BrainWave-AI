@@ -16,10 +16,61 @@
 
 
         .chat{
-            width: 50%;
+            width: min(820px, calc(100% - 32px));
             display: flex;
             flex-direction: column;
             gap: 20px;
+            padding: 20px 0 140px;
+
+            .chatHeader{
+                position: sticky;
+                top: 0;
+                z-index: 3;
+                width: 100%;
+                padding: 10px 14px;
+                border-radius: 12px;
+                background: linear-gradient(90deg, rgba(24, 22, 42, 0.92), rgba(37, 33, 64, 0.92));
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(6px);
+
+                h2{
+                    margin: 0;
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    color: #d8dcff;
+                    text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .chatMessageRow{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .chatMessageRow.user{
+                align-items: flex-end;
+            }
+
+            .chatMessageRow.model{
+                align-items: flex-start;
+            }
+
+            .invalidChatMessage{
+                padding: 14px 16px;
+                border-radius: 12px;
+                background-color: rgba(255, 85, 85, 0.1);
+                border: 1px solid rgba(255, 85, 85, 0.35);
+                color: #ffd7d7;
+
+                a{
+                    color: #9ad0ff;
+                    text-decoration: underline;
+                }
+            }
             p,li{
                 margin: 10px 0px;
             }
@@ -27,6 +78,72 @@
 
             .message{
                 padding: 20px;
+                line-height: 1.65;
+                overflow-wrap: anywhere;
+
+                &:not(.user){
+                    background-color: #171627;
+                    border: 1px solid rgba(255, 255, 255, 0.06);
+                    border-radius: 14px;
+                }
+
+                h1,h2,h3,h4{
+                    margin: 14px 0 10px;
+                    line-height: 1.3;
+                }
+
+                h1{font-size: 1.55rem;}
+                h2{font-size: 1.35rem;}
+                h3{font-size: 1.15rem;}
+
+                ul,ol{
+                    margin: 10px 0 12px 24px;
+                    padding-left: 10px;
+                }
+
+                li::marker{
+                    color: #9ad0ff;
+                }
+
+                code{
+                    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                    background-color: rgba(255, 255, 255, 0.08);
+                    padding: 2px 6px;
+                    border-radius: 6px;
+                    font-size: 0.9em;
+                }
+
+                pre{
+                    background-color: #11101d;
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    padding: 14px;
+                    border-radius: 10px;
+                    overflow-x: auto;
+                    margin: 12px 0;
+                }
+
+                pre code{
+                    background-color: transparent;
+                    padding: 0;
+                    border-radius: 0;
+                }
+
+                blockquote{
+                    border-left: 3px solid #5ea8ff;
+                    padding-left: 12px;
+                    color: #c9d7ff;
+                    margin: 12px 0;
+                }
+
+                hr{
+                    border: none;
+                    border-top: 1px solid rgba(255, 255, 255, 0.2);
+                    margin: 16px 0;
+                }
+
+                strong{
+                    color: #ffffff;
+                }
 
 
                 &.user{
@@ -39,4 +156,15 @@
         }
     }
 
+}
+
+@media (max-width: 900px) {
+    .chatpage .wrapper .chat {
+        width: calc(100% - 20px);
+        padding-top: 12px;
+    }
+
+    .chatpage .wrapper .chat .message {
+        padding: 16px;
+    }
 }
