@@ -79,7 +79,6 @@ const DashboardPage = () => {
       }
 
       const url = buildApiUrl("/api/chats");
-      console.log("Create Chat Request:", { url, method: "POST", token: token.slice(0, 10) + "..." });
 
       const response = await fetch(url, {
         method: "POST",
@@ -101,12 +100,10 @@ const DashboardPage = () => {
       let chatId = toChatId(payload);
 
       if (!chatId) {
-        console.warn("New chat created but payload missing ID:", payload);
         chatId = await resolveCreatedChatId({ token, text, userId });
       }
 
       if (!chatId) {
-        console.error("Unable to resolve chat ID from payload or fallback lookup");
         throw new Error("Unable to resolve the new chat id from server response");
       }
 
