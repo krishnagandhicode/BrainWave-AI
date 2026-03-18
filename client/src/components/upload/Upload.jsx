@@ -1,12 +1,15 @@
-import { IKContext, IKImage, IKUpload } from "imagekitio-react";
+import { IKContext, IKUpload } from "imagekitio-react";
 import { useRef } from "react";
+import { buildApiUrl } from "../../lib/api";
 
 const urlEndpoint = import.meta.env.VITE_IMAGE_KIT_ENDPOINT;
 const publicKey = import.meta.env.VITE_IMAGE_KIT_PUBLIC_KEY;
 
 const authenticator = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/upload");
+    const response = await fetch(buildApiUrl("/api/upload"), {
+      credentials: "include",
+    });
 
     if (!response.ok) {
       const errorText = await response.text();

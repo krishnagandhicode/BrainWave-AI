@@ -11,10 +11,17 @@ const safetySettings = [
     },
   ];
 
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_PUBLIC_KEY);
+const geminiApiKey = import.meta.env.VITE_GEMINI_PUBLIC_KEY;
 
-const model = genAI.getGenerativeModel({ 
-    model: "gemini-1.5-flash",
+if (!geminiApiKey) {
+  throw new Error("Missing VITE_GEMINI_PUBLIC_KEY in client .env");
+}
+
+const genAI = new GoogleGenerativeAI(geminiApiKey);
+const geminiModel = import.meta.env.VITE_GEMINI_MODEL || "gemini-2.0-flash";
+
+const model = genAI.getGenerativeModel({
+  model: geminiModel,
     safetySettings,
  });
 

@@ -13,7 +13,7 @@ const HomePage = () => {
         <h1>BrainWave</h1>
         <h2>Supercharge your creativity and productivity</h2>
         <h3>
-          "Machine Minds, Human Potential – Creating the Future Together!"
+          &quot;Machine Minds, Human Potential - Creating the Future Together!&quot;
         </h3>
         <Link to="/dashboard">Get Started</Link>
       </div>
