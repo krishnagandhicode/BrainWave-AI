@@ -2,6 +2,8 @@
 
 Full-stack AI chat application with Clerk authentication, Gemini responses, image upload support, and persistent chat history.
 
+# Live : https://brain-wave-ai-dev.vercel.app/
+
 ## Stack
 
 - Frontend: React 19 + Vite + React Router + TanStack Query
